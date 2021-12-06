@@ -1,0 +1,26 @@
+#Propiedades Microservicios
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: AuditoryRates
+      username: userauthenticationrates
+      password: userauthenticationrates
+  
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+        
+#Propiedades Puertos
+server:
+  port: ${PORT:0}
+  
+#Propiedades Eurkeca
+eureka:
+  instance:
+    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${random.int[1,999999]}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka

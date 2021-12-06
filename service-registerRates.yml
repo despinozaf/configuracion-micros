@@ -1,0 +1,30 @@
+#Propiedades Microservicios
+spring:
+  jpa:
+    hibernate:
+      naming:
+        physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
+  data:
+    jpa.repositories.enabled: true
+  datasource:
+    #1.JDBC
+    driver-class-name: org.postgresql.Driver 
+    url: jdbc:postgresql://cereza-rates.cm3x8g7jmjak.us-east-1.rds.amazonaws.com:5432/defaultdb
+    username: postgres
+    password: yARNe1sS^OkG
+    continueOnError: true 
+    initialization-mode: always
+  messages:
+    basename: i18n/messages
+    encoding: UTF-8
+#Propiedades Puertos
+server:
+  port: ${PORT:0}
+  
+#Propiedades Eurkeca
+eureka:
+  instance:
+    instanceId: ${spring.cloud.client.hostname}:${spring.application.name}:${random.int[1,999999]}
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka

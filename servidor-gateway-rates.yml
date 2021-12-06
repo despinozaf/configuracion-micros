@@ -1,0 +1,50 @@
+spring:
+  cloud: 
+   gateway:
+      routes:
+      - id: serv-authenticationRates
+          #lb:// cuando se va a acceder a través de Eureka
+        uri: lb://service-authentificationRates #http://localhost:8080
+        predicates:
+          - Path=/sauthenticationRates/**
+        filters:
+          - RewritePath=/sauthenticationRates/*, /
+          
+      - id: serv-registerRates
+          #lb:// cuando se va a acceder a través de Eureka
+        uri: lb://service-registerRates #http://localhost:8080
+        predicates:
+          - Path=/sregisterRates/**
+        filters:
+          - RewritePath=/sregisterRates/*, /
+          
+      - id: serv-vehicleRates
+          #lb:// cuando se va a acceder a través de Eureka
+        uri: lb://service-vehicleRates #http://localhost:8080
+        predicates:
+          - Path=/svehicleRates/**
+        filters:
+          - RewritePath=/svehicleRates/*, /
+          
+      - id: serv-mailRates
+          #lb:// cuando se va a acceder a través de Eureka
+        uri: lb://service-mailRates #http://localhost:8080
+        predicates:
+          - Path=/smailRates/**
+        filters:
+          - RewritePath=/smailRates/*, /
+                
+      - id: serv-locationRates
+          #lb:// cuando se va a acceder a través de Eureka
+        uri: lb://service-locationRates #http://localhost:8080
+        predicates:
+          - Path=/slocationRates/**
+        filters:
+          - RewritePath=/slocationRates/*, /
+server:
+  port: 7000
+         
+eureka:                  
+ client:
+  serviceUrl:
+   defaultZone: http://localhost:8761/eureka
